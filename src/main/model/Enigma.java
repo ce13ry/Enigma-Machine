@@ -40,6 +40,7 @@ public class Enigma {
 
     // Effect: Encrypts/Decrypts the input string
     // Modifies: this
+    @SuppressWarnings("methodlength")
     public String cipher(String in){
 
         //reset all rotars

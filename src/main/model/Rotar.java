@@ -5,11 +5,11 @@ public class Rotar {
     private String[] setting;
     private int settingNum;
 
-    final String[] SETTING1 = "p7zgxb08ue3tl2vk,o5ns9i1q rhd4.ymafc6wj".split("");
-    final String[] SETTING2 = "t7jr6bypx,fg2 n5v1le3z.dk0suia4h8qco9wm".split("");
-    final String[] SETTING3 = "bnat3suk6j.e2xyr 1zidq74pc9o,m50hvlw8gf".split("");
-    final String[] SETTING4 = "ro5skned3y,lz19xivh0u.26wbpjq7aftcm4 g8".split("");
-    final String[] SETTING5 = "zaw5ndl2txiu.16vhqg3pfy9o0c4b7smr, k8je".split("");
+    final static String[] SETTING1 = "p7zgxb08ue3tl2vk,o5ns9i1q rhd4.ymafc6wj".split("");
+    final static String[] SETTING2 = "t7jr6bypx,fg2 n5v1le3z.dk0suia4h8qco9wm".split("");
+    final static String[] SETTING3 = "bnat3suk6j.e2xyr 1zidq74pc9o,m50hvlw8gf".split("");
+    final static String[] SETTING4 = "ro5skned3y,lz19xivh0u.26wbpjq7aftcm4 g8".split("");
+    final static String[] SETTING5 = "zaw5ndl2txiu.16vhqg3pfy9o0c4b7smr, k8je".split("");
 
     final static int NUMOFCHARS = 39;
 
@@ -46,7 +46,7 @@ public class Rotar {
     }
 
     // Effect: Resets the rotar to its default setting
-    public void reset(Rotar r){
+    public static void reset(Rotar r){
         int i = r.getSettingNum();
         switch(i){
             case 1 :
@@ -69,7 +69,7 @@ public class Rotar {
     
     //Effect: copies default SETTING to setting
     //Modifies: this
-    public void copy(String[] setting, String[] DEFAULT){
+    public static void copy(String[] setting, String[] DEFAULT){
         for(int i = 0; i < NUMOFCHARS; i++){
             setting[i] = DEFAULT[i];
         }

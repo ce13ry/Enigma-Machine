@@ -5,15 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class TestSample {
-    
+public class EnigmaTest {
     @BeforeEach
     void runBefore() {
 
-    }
-
-    @Test
-    void sampleTest() {
-        assertTrue(true);
     }
 }
