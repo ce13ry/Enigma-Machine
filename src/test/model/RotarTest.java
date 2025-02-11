@@ -15,105 +15,105 @@ public class RotarTest {
     }
 
     @Test
-    void settring1Test(){
+    void settring1Test() {
         rotar = new Rotar(1);
         assertEquals(rotar.getSettingNum(), 1);
 
-        for(int i = 0; i < rotar.getSetting().length; i++){
+        for (int i = 0; i < rotar.getSetting().length; i++) {
             assertEquals(rotar.getSetting()[i], Rotar.SETTING1[i]);     
         }
     }
 
     @Test
-    void settring2Test(){
+    void settring2Test() {
         rotar = new Rotar(2);
         assertEquals(rotar.getSettingNum(), 2);
 
-        for(int i = 0; i < rotar.getSetting().length; i++){
+        for (int i = 0; i < rotar.getSetting().length; i++) {
             assertEquals(rotar.getSetting()[i], Rotar.SETTING2[i]);     
         }
     }
 
     @Test
-    void settring3Test(){
+    void settring3Test() {
         rotar = new Rotar(3);
         assertEquals(rotar.getSettingNum(), 3);
 
-        for(int i = 0; i < rotar.getSetting().length; i++){
+        for (int i = 0; i < rotar.getSetting().length; i++) {
             assertEquals(rotar.getSetting()[i], Rotar.SETTING3[i]);     
         }
     }
 
     @Test
-    void settring4Test(){
+    void settring4Test() {
         rotar = new Rotar(4);
         assertEquals(rotar.getSettingNum(), 4);
 
-        for(int i = 0; i < rotar.getSetting().length; i++){
+        for (int i = 0; i < rotar.getSetting().length; i++) {
             assertEquals(rotar.getSetting()[i], Rotar.SETTING4[i]);     
         }
     }
 
     @Test
-    void settring5Test(){
+    void settring5Test() {
         rotar = new Rotar(5);
         assertEquals(rotar.getSettingNum(), 5);
         
-        for(int i = 0; i < rotar.getSetting().length; i++){
+        for (int i = 0; i < rotar.getSetting().length; i++) {
             assertEquals(rotar.getSetting()[i], Rotar.SETTING5[i]);     
         }
     }
 
     @Test
-    void rotateOnceTest(){
+    void rotateOnceTest() {
         rotar.rotate();       
-        for(int i = 0; i < rotar.getSetting().length; i++){
+        for (int i = 0; i < rotar.getSetting().length; i++) {
             assertEquals(rotar.getSetting()[i], "7zgxb08ue3tl2vk,o5ns9i1q rhd4.ymafc6wjp".split("")[i]);     
         }
     }
 
     @Test
-    void rotateMultipleTest(){
+    void rotateMultipleTest() {
         rotar.rotate();
-        for(int i = 0; i < rotar.getSetting().length; i++){
+        for (int i = 0; i < rotar.getSetting().length; i++) {
             assertEquals(rotar.getSetting()[i], "7zgxb08ue3tl2vk,o5ns9i1q rhd4.ymafc6wjp".split("")[i]);     
         }
 
         rotar.rotate();
-        for(int i = 0; i < rotar.getSetting().length; i++){
+        for (int i = 0; i < rotar.getSetting().length; i++) {
             assertEquals(rotar.getSetting()[i], "zgxb08ue3tl2vk,o5ns9i1q rhd4.ymafc6wjp7".split("")[i]);     
         }
     }
 
     @Test
-    void resetTest(){
+    void resetTest() {
         rotar.rotate();
         Rotar.reset(rotar);
         
-        for(int i = 0; i < rotar.getSetting().length; i++){
+        for (int i = 0; i < rotar.getSetting().length; i++) {
             assertEquals(rotar.getSetting()[i], Rotar.SETTING1[i]);     
         }
     }
 
     @Test
-    void copyOnceTest(){
+    void copyOnceTest() {
         Rotar.copy(rotar.getSetting(), Rotar.SETTING2);
 
-        for(int i = 0; i < rotar.getSetting().length; i++){
+        for (int i = 0; i < rotar.getSetting().length; i++) {
             assertEquals(rotar.getSetting()[i], Rotar.SETTING2[i]);     
         }
     }
 
     @Test
-    void copyMultipleTest(){
+    void copyMultipleTest() {
         Rotar.copy(rotar.getSetting(), Rotar.SETTING2);
 
-        for(int i = 0; i < rotar.getSetting().length; i++){
+        for (int i = 0; i < rotar.getSetting().length; i++) {
             assertEquals(rotar.getSetting()[i], Rotar.SETTING2[i]);     
         }
 
         Rotar.copy(rotar.getSetting(), Rotar.SETTING1);
-        for(int i = 0; i < rotar.getSetting().length; i++){
+        for (int i = 0; i < rotar.getSetting().length; i++) {
             assertEquals(rotar.getSetting()[i], Rotar.SETTING1[i]);     
         }
     }

@@ -1,0 +1,125 @@
+package ui;
+
+import model.Enigma;
+
+import model.Rotar;
+
+import java.util.Scanner;
+
+public class EnigmaApp {
+    private Scanner input = new Scanner(System.in);
+    
+    public EnigmaApp() {
+        runEnigma();
+    }
+
+    private void runEnigma() {
+        boolean running = true;
+
+        System.out.println("Welcome to the Enigma Machine!");
+
+        Enigma enigma = new Enigma();
+
+        while (running) {
+            
+            System.out.println("Settings: " + options(enigma));
+            
+            displayOptions();
+
+            String command = input.nextLine();
+
+            if (command.equals("q")) {
+                running = false;
+            } else {
+                processCommand(command, enigma);
+            }
+
+            System.out.println("");
+        }
+        System.out.println("Ended");
+    }
+
+    private void displayOptions() {
+        System.out.println("Enter 's' to add a setting");
+        System.out.println("Enter 'r' to remove a rotar");
+        System.out.println("Enter 'c' to cipher a string");
+        System.out.println("Enter 'q' to quit");
+    }
+
+    private void processCommand(String command, Enigma enigma) { 
+        switch (command) {
+            case "s":
+                setting(enigma);
+                break;
+            case "r":
+                remove(enigma);
+                break;
+            case "c":
+                cipher(enigma);
+                break;
+        }
+    }
+
+    private void setting(Enigma enigma) {
+        System.out.println("Enter the setting number (1-5): ");
+        int setting = input.nextInt();
+        input.nextLine();
+        if (setting < 1 || setting > 5) {
+            fail();
+            return;
+        }
+        addSetting(setting, enigma);
+    }
+
+    private void remove(Enigma enigma) {
+        System.out.println("Enter position of the rotar desired to be removed " + options(enigma) + ": ");
+        int remove = input.nextInt();
+        input.nextLine();
+        if (remove < 1 || remove > enigma.getRotars().size() - 1) {
+            fail();
+            return;
+        }
+        enigma.remove(remove);
+    }
+
+    private void cipher(Enigma enigma) {
+        System.out.println("Enter the string to be ciphered: ");
+        String cipher = input.nextLine();
+        System.out.println(enigma.cipher(cipher));
+    }
+
+    private String options(Enigma enigma) {
+        String options = "";
+        for (Rotar r : enigma.getRotars()) {
+            options += r.getSettingNum() + ", ";
+        }
+        return options;
+    }
+
+    private void addSetting(int setting, Enigma enigma) {
+        switch (setting) {
+            case 1:
+                enigma.addSetting1();
+                break;
+            case 2:
+                enigma.addSetting2();
+                break;
+            case 3:
+                enigma.addSetting3();
+                break;
+            case 4:
+                enigma.addSetting4();
+                break;
+            case 5:
+                enigma.addSetting5();
+                break;
+            default:
+                fail();
+        }
+    }
+
+    private void fail() {
+        System.out.println("Invalid input");
+    }
+
+}

@@ -1,17 +1,18 @@
 package model;
+
 import java.util.*;
 
 public class Enigma {
     int iterations = 0;
 
-    public ArrayList<Rotar> rotars;
+    private ArrayList<Rotar> rotars;
 
-    private String[] reflector = "swjedvz qcxpotmliuanrfbkygh9876543210,.".split("");
-    final String ALPHABET = "abcdefghijklmnopqrstuvwxyz 0123456789.,";
-    
+    private String[] reflector = "SWJEDVZYQCXPOTMLIUANRFBKHGswjedvz qcxpotmliuanrfbkygh9876543210,.?!".split("");
+    static final String ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789.,!?";
+
     // Effect: Creates a machine with no rotars
     public Enigma() {
-        rotars  = new ArrayList<>();
+        rotars = new ArrayList<>();
     }
 
     public void addSetting1() {
@@ -34,73 +35,72 @@ public class Enigma {
         rotars.add(new Rotar(5));
     }
 
-    public void remove(int i){
-        rotars.remove(rotars.get(i-1));
+    public void remove(int i) {
+        rotars.remove(rotars.get(i - 1));
     }
 
     // Effect: Encrypts/Decrypts the input string
     // Modifies: this
-    @SuppressWarnings("methodlength")
-    public String cipher(String in){
+    public String cipher(String in) {
 
-        //reset all rotars
-        for(Rotar r : rotars){
+        // reset all rotars
+        for (Rotar r : rotars) {
             Rotar.reset(r);
             iterations = 0;
         }
-        
+
         String[] input = in.split("");
         int pos = 0;
-        
-        for(String c : input){
+
+        for (String c : input) {
             int character = defaultPosition(c);
 
-            //forward direction
-            for(Rotar r : rotars){
+            // forward direction
+            for (Rotar r : rotars) {
                 input[pos] = r.getLetter(character);
                 character = defaultPosition(input[pos]);
             }
-            
-            //reflector
+
+            // reflector
             input[pos] = reflector[character];
             character = defaultPosition(input[pos]);
-            
-            //backward direction
-            for(int i = rotars.size() - 1; i >= 0; i--){
+
+            // backward direction
+            for (int i = rotars.size() - 1; i >= 0; i--) {
                 input[pos] = getDefaultLetter(getLetterPosition(input[pos], rotars.get(i)));
-                character = defaultPosition(input[pos]); 
-                
+                character = defaultPosition(input[pos]);
+
             }
 
-            //rotates
-            update(iterations, 0);  
+            // rotates
+            update(iterations, 0);
 
             pos++;
             iterations++;
-            
+
         }
-        
+
         return toString(input);
     }
 
     // Effect: Rotates nth rotar a whole loop before rotating n+1th rotar
-    public void update(int iterations, int n){
+    public void update(int iterations, int n) {
 
-        if(iterations < Rotar.NUMOFCHARS-1){
-            for(int i = 0; i <= n; i++){
+        if (iterations < Rotar.NUMOFCHARS - 1) {
+            for (int i = 0; i <= n; i++) {
                 rotars.get(i).rotate();
             }
-        }else if(n < rotars.size() - 1){
-            update(iterations - Rotar.NUMOFCHARS-1, n + 1);
-        }else{
-            update(iterations - Rotar.NUMOFCHARS-1, n);
+        } else if (n < rotars.size() - 1) {
+            update(iterations - Rotar.NUMOFCHARS - 1, n + 1);
+        } else {
+            update(iterations - Rotar.NUMOFCHARS - 1, n);
         }
     }
 
     // Effect: Returns the position of the given letter in the given rotar
-    public int getLetterPosition(String letter, Rotar rotar){
-        for(int i = 0; i < Rotar.NUMOFCHARS; i++){
-            if(rotar.getLetter(i).equals(letter)){
+    public int getLetterPosition(String letter, Rotar rotar) {
+        for (int i = 0; i < Rotar.NUMOFCHARS; i++) {
+            if (rotar.getLetter(i).equals(letter)) {
                 return i;
             }
         }
@@ -108,22 +108,25 @@ public class Enigma {
     }
 
     // Effect: Returns the default position of the given letter
-    public int defaultPosition(String letter){
+    public int defaultPosition(String letter) {
         return ALPHABET.indexOf(letter);
     }
 
     // Effect: Returns the default letter at the given position
-    public String getDefaultLetter(int i){
+    public String getDefaultLetter(int i) {
         return ALPHABET.substring(i, i + 1);
     }
 
     // Effect: Array -> String
-    public String toString(String[] arr){
+    public String toString(String[] arr) {
         String output = "";
-        for(String s : arr){
+        for (String s : arr) {
             output += s;
         }
         return output;
     }
-}
 
+    public ArrayList<Rotar> getRotars() {
+        return rotars;
+    }
+}

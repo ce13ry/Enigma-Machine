@@ -5,39 +5,41 @@ public class Rotar {
     private String[] setting;
     private int settingNum;
 
-    final static String[] SETTING1 = "p7zgxb08ue3tl2vk,o5ns9i1q rhd4.ymafc6wj".split("");
-    final static String[] SETTING2 = "t7jr6bypx,fg2 n5v1le3z.dk0suia4h8qco9wm".split("");
-    final static String[] SETTING3 = "bnat3suk6j.e2xyr 1zidq74pc9o,m50hvlw8gf".split("");
-    final static String[] SETTING4 = "ro5skned3y,lz19xivh0u.26wbpjq7aftcm4 g8".split("");
-    final static String[] SETTING5 = "zaw5ndl2txiu.16vhqg3pfy9o0c4b7smr, k8je".split("");
+    static final String[] SETTING1 = "p7JzgSxbAK0?D8uYReEH3tl2vkZB,o!FX5nsIG9COTi1qNU rMhWd4.yLmaPfcQ6wVj".split("");
+    static final String[] SETTING2 = "tN7jQr6ObyGpxYU,E!fgM2F Tn5VLDXv1?leJ3z.AdKCk0SsuWiIBaZ4hH8qPcoR9wm".split("");
+    static final String[] SETTING3 = "IbnaRt3sHuMk6j.ZeE2xTyFr 1?DNYziLUdqOG!VB74pSXc9Co,QmA50hvPlJw8KWgf".split("");
+    static final String[] SETTING4 = "rPo5skDneQdM3y,CLlz!RW19xiEVvh0uSKBUF.26Xwb?GTJYpjq7AafOtHcm4NI gZ8".split("");
+    static final String[] SETTING5 = "ZzaYwU5ndNIl2HtTxiu.16vhq?g3pJfBESyOV9oKG0Wc4F!LCQXb7smMDrR,A k8Pje".split("");
 
-    final static int NUMOFCHARS = 39;
+    static final int NUMOFCHARS = Enigma.ALPHABET.length();
 
-    // Effect: Creates a rotar with the given setting (out of 5 possible settings) and sets canRotate to false
+    // Effect: Creates a rotar with the given setting (out of 5 possible settings)
+    // and sets canRotate to false
     // Requires: setting is an integer between 1 and 5
+    @SuppressWarnings("methodlength")
     public Rotar(int setting) {
-        switch(setting){
-            case 1 :
+        switch (setting) {
+            case 1:
                 this.setting = new String[NUMOFCHARS];
                 copy(this.setting, SETTING1);
                 settingNum = 1;
                 break;
-            case 2 :   
+            case 2:
                 this.setting = new String[NUMOFCHARS];
                 copy(this.setting, SETTING2);
                 settingNum = 2;
                 break;
-            case 3 :
+            case 3:
                 this.setting = new String[NUMOFCHARS];
                 copy(this.setting, SETTING3);
                 settingNum = 3;
                 break;
-            case 4 :
+            case 4:
                 this.setting = new String[NUMOFCHARS];
                 copy(this.setting, SETTING4);
                 settingNum = 4;
                 break;
-            case 5 :
+            case 5:
                 this.setting = new String[NUMOFCHARS];
                 copy(this.setting, SETTING5);
                 settingNum = 5;
@@ -46,32 +48,32 @@ public class Rotar {
     }
 
     // Effect: Resets the rotar to its default setting
-    public static void reset(Rotar r){
+    public static void reset(Rotar r) {
         int i = r.getSettingNum();
-        switch(i){
-            case 1 :
-                copy(r.setting, SETTING1);  
+        switch (i) {
+            case 1:
+                copy(r.setting, SETTING1);
                 break;
-            case 2 :
-                copy(r.setting, SETTING2);  
+            case 2:
+                copy(r.setting, SETTING2);
                 break;
-            case 3 :
-                copy(r.setting, SETTING3);  
+            case 3:
+                copy(r.setting, SETTING3);
                 break;
-            case 4 :
-                copy(r.setting, SETTING4);  
+            case 4:
+                copy(r.setting, SETTING4);
                 break;
-            case 5 :
+            case 5:
                 copy(r.setting, SETTING5);
                 break;
         }
     }
-    
-    //Effect: copies default SETTING to setting
-    //Modifies: this
-    public static void copy(String[] setting, String[] DEFAULT){
-        for(int i = 0; i < NUMOFCHARS; i++){
-            setting[i] = DEFAULT[i];
+
+    // Effect: copies default SETTING to setting
+    // Modifies: this
+    public static void copy(String[] setting, String[] defaultSetting) {
+        for (int i = 0; i < NUMOFCHARS; i++) {
+            setting[i] = defaultSetting[i];
         }
     }
 
@@ -85,16 +87,15 @@ public class Rotar {
         setting[setting.length - 1] = first;
     }
 
-    public int getSettingNum(){
+    public int getSettingNum() {
         return this.settingNum;
     }
 
-    public String[] getSetting(){
+    public String[] getSetting() {
         return this.setting;
     }
 
-    public String getLetter(int i){
+    public String getLetter(int i) {
         return setting[i];
     }
 }
-
