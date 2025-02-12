@@ -160,12 +160,13 @@ public class EnigmaTest {
     void singleSettingMultipleLetters() {
         enigma.addSetting1();
         assertEquals(enigma.cipher("abcdefghijklmnopqrstuvwxyz abcdefghijklmnopqrstuvwxyz"), 
-        "mcnsw460wuxnk77bb94q5upae6o.2c2hmsity1.a61 2tqbbhhd.w");
+                                        "mcnsw460wuxnk77bb94q5upae6o.2c2hmsity1.a61 2tqbbhhd.w");
 
         assertEquals(enigma.cipher("mcnsw460wuxnk77bb94q5upae6o.2c2hmsity1.a61 2tqbbhhd.w"),
-        "abcdefghijklmnopqrstuvwxyz abcdefghijklmnopqrstuvwxyz");
+                                        "abcdefghijklmnopqrstuvwxyz abcdefghijklmnopqrstuvwxyz");
     }
 
+    @SuppressWarnings("methodlength")
     @Test
     void multipleSettingMultipleLetters() {
         enigma.addSetting1();

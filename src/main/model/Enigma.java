@@ -35,12 +35,17 @@ public class Enigma {
         rotars.add(new Rotar(5));
     }
 
+    // Effect: Removes the rotar at the given position
+    // Modifies: this
+    // Requires: i is a valid position
     public void remove(int i) {
         rotars.remove(rotars.get(i - 1));
     }
 
+    // Requires: Characters in the input string are in the alphabet
     // Effect: Encrypts/Decrypts the input string
     // Modifies: this
+    // Modifies: rotars
     public String cipher(String in) {
 
         // reset all rotars
@@ -84,6 +89,7 @@ public class Enigma {
     }
 
     // Effect: Rotates nth rotar a whole loop before rotating n+1th rotar
+    // Modifies rotars
     public void update(int iterations, int n) {
 
         if (iterations < Rotar.NUMOFCHARS - 1) {

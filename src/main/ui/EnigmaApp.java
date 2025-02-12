@@ -22,9 +22,7 @@ public class EnigmaApp {
 
         while (running) {
             
-            System.out.println("Settings: " + options(enigma));
-            
-            displayOptions();
+            displayOptions(enigma);
 
             String command = input.nextLine();
 
@@ -39,10 +37,16 @@ public class EnigmaApp {
         System.out.println("Ended");
     }
 
-    private void displayOptions() {
+    private void displayOptions(Enigma enigma) {
+        if (options(enigma).equals("")) {
+            System.out.println("Settings: Empty");
+        } else {
+            System.out.println("Settings: " + options(enigma));
+        }
         System.out.println("Enter 's' to add a setting");
         System.out.println("Enter 'r' to remove a rotar");
-        System.out.println("Enter 'c' to cipher a string");
+        System.out.println("Enter 'e' to encrypt/decrypt a string");
+        System.out.println("Enter 'c' to clear settings");
         System.out.println("Enter 'q' to quit");
     }
 
@@ -54,8 +58,11 @@ public class EnigmaApp {
             case "r":
                 remove(enigma);
                 break;
-            case "c":
+            case "e":
                 cipher(enigma);
+                break;
+            case "c":
+                clear(enigma);
                 break;
         }
     }
@@ -75,7 +82,7 @@ public class EnigmaApp {
         System.out.println("Enter position of the rotar desired to be removed " + options(enigma) + ": ");
         int remove = input.nextInt();
         input.nextLine();
-        if (remove < 1 || remove > enigma.getRotars().size() - 1) {
+        if (remove < 1 || remove > enigma.getRotars().size()) {
             fail();
             return;
         }
@@ -86,6 +93,10 @@ public class EnigmaApp {
         System.out.println("Enter the string to be ciphered: ");
         String cipher = input.nextLine();
         System.out.println(enigma.cipher(cipher));
+    }
+
+    private void clear(Enigma enigma) {
+        enigma.getRotars().clear();
     }
 
     private String options(Enigma enigma) {

@@ -48,6 +48,7 @@ public class Rotar {
     }
 
     // Effect: Resets the rotar to its default setting
+    // Modifies: this
     public static void reset(Rotar r) {
         int i = r.getSettingNum();
         switch (i) {
