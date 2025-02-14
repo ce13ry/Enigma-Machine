@@ -14,24 +14,8 @@ public class Enigma {
         rotars = new ArrayList<>();
     }
 
-    public void addSetting1() {
-        rotars.add(new Rotar(1));
-    }
-
-    public void addSetting2() {
-        rotars.add(new Rotar(2));
-    }
-
-    public void addSetting3() {
-        rotars.add(new Rotar(3));
-    }
-
-    public void addSetting4() {
-        rotars.add(new Rotar(4));
-    }
-
-    public void addSetting5() {
-        rotars.add(new Rotar(5));
+    public void addSetting(int i, int initialPosition) {
+        rotars.add(new Rotar(i, initialPosition));
     }
 
     // Effect: Removes the rotar at the given position
@@ -45,13 +29,14 @@ public class Enigma {
     // Modifies: this
     // Modifies: rotars
     // Requires: Characters in the input string are in the alphabet
+    @SuppressWarnings("methodlength") // 26 lines instead of 25
     public String cipher(String in) {
 
         // reset all rotars
         for (Rotar r : rotars) {
             Rotar.reset(r);
         }
-
+        
         String[] input = in.split("");
 
         if (invalid(input)) {
@@ -77,14 +62,11 @@ public class Enigma {
             for (int i = rotars.size() - 1; i >= 0; i--) {
                 input[pos] = getDefaultLetter(getLetterPosition(input[pos], rotars.get(i)));
                 character = defaultPosition(input[pos]);
-
             }
 
             // rotates
             update(0);
-
             pos++;
-
         }
 
         return toString(input);

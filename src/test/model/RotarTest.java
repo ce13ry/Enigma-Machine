@@ -11,12 +11,12 @@ public class RotarTest {
 
     @BeforeEach
     void runBefore() {
-        rotar = new Rotar(1);
+        rotar = new Rotar(1, 0);
     }
 
     @Test
     void setting1Test() {
-        rotar = new Rotar(1);
+        rotar = new Rotar(1, 0);
         assertEquals(rotar.getSettingNum(), 1);
 
         for (int i = 0; i < rotar.getSetting().length; i++) {
@@ -26,7 +26,7 @@ public class RotarTest {
 
     @Test
     void setting2Test() {
-        rotar = new Rotar(2);
+        rotar = new Rotar(2, 0);
         assertEquals(rotar.getSettingNum(), 2);
 
         for (int i = 0; i < rotar.getSetting().length; i++) {
@@ -36,7 +36,7 @@ public class RotarTest {
 
     @Test
     void setting3Test() {
-        rotar = new Rotar(3);
+        rotar = new Rotar(3, 0);
         assertEquals(rotar.getSettingNum(), 3);
 
         for (int i = 0; i < rotar.getSetting().length; i++) {
@@ -46,7 +46,7 @@ public class RotarTest {
 
     @Test
     void setting4Test() {
-        rotar = new Rotar(4);
+        rotar = new Rotar(4, 0);
         assertEquals(rotar.getSettingNum(), 4);
 
         for (int i = 0; i < rotar.getSetting().length; i++) {
@@ -56,7 +56,7 @@ public class RotarTest {
 
     @Test
     void setting5Test() {
-        rotar = new Rotar(5);
+        rotar = new Rotar(5, 0);
         assertEquals(rotar.getSettingNum(), 5);
         
         for (int i = 0; i < rotar.getSetting().length; i++) {
@@ -66,7 +66,7 @@ public class RotarTest {
 
     @Test
     void wrongSettingTest() {
-        rotar = new Rotar(6);
+        rotar = new Rotar(6, 0);
         for (int i = 0; i < rotar.getSetting().length; i++) {
             assertEquals(rotar.getSetting()[i], null);     
         }

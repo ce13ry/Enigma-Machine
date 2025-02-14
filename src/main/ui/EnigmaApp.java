@@ -1,8 +1,6 @@
 package ui;
 
-import model.Enigma;
-
-import model.Rotar;
+import model.*;
 
 import java.util.Scanner;
 
@@ -80,12 +78,14 @@ public class EnigmaApp {
     private void setting(Enigma enigma) {
         System.out.println("Enter the setting number (1-5): ");
         int setting = input.nextInt();
+        System.out.println("Enter the initial position: ");
+        int initial = input.nextInt();
         input.nextLine();
         if (setting < 1 || setting > 5) {
             fail();
             return;
         }
-        addSetting(setting, enigma);
+        addSetting(setting, initial, enigma);
     }
 
     // EFFECTS: processes the user command for removing a rotar
@@ -124,33 +124,15 @@ public class EnigmaApp {
     private String options(Enigma enigma) {
         String options = "";
         for (Rotar r : enigma.getRotars()) {
-            options += r.getSettingNum() + ", ";
+            options += r.getSettingNum() + " (" + r.getInitialPosition() + ")" + ", ";
         }
         return options;
     }
 
     // EFFECTS: adds a setting to the Enigma machine
     // MODIFIES: enigma
-    private void addSetting(int setting, Enigma enigma) {
-        switch (setting) {
-            case 1:
-                enigma.addSetting1();
-                break;
-            case 2:
-                enigma.addSetting2();
-                break;
-            case 3:
-                enigma.addSetting3();
-                break;
-            case 4:
-                enigma.addSetting4();
-                break;
-            case 5:
-                enigma.addSetting5();
-                break;
-            default:
-                fail();
-        }
+    private void addSetting(int setting, int initial, Enigma enigma) {
+        enigma.addSetting(setting, initial);
     }
 
     private void fail() {

@@ -5,6 +5,7 @@ public class Rotar {
     private String[] setting;
     private int settingNum;
     private int rotationPosition;
+    private int initialPosition;
 
     static final String[] SETTING1 = "p7JzgSxbAK0?D8uYReEH3tl2vkZB,o!FX5nsIG9COTi1qNU rMhWd4.yLmaPfcQ6wVj".split("");
     static final String[] SETTING2 = "tN7jQr6ObyGpxYU,E!fgM2F Tn5VLDXv1?leJ3z.AdKCk0SsuWiIBaZ4hH8qPcoR9wm".split("");
@@ -18,7 +19,7 @@ public class Rotar {
     // and sets canRotate to false
     // Requires: setting is an integer between 1 and 5
     @SuppressWarnings("methodlength")
-    public Rotar(int setting) {
+    public Rotar(int setting, int initialPosition) {
         this.setting = new String[NUMOFCHARS];
         switch (setting) {
             case 1:
@@ -45,10 +46,15 @@ public class Rotar {
                 break;
         }
         rotationPosition = 0;
+        this.initialPosition = initialPosition;
+        for (int i = 0; i < initialPosition; i++) {
+            rotate();
+        }
     }
 
     // Effect: Resets the rotar to its default setting
     // Modifies: this
+    // Requires: r is a valid rotar
     public static void reset(Rotar r) {
         int i = r.getSettingNum();
         switch (i) {
@@ -64,11 +70,14 @@ public class Rotar {
             case 4:
                 copy(r.setting, SETTING4);
                 break;
-            case 5:
+            default:
                 copy(r.setting, SETTING5);
                 break;
         }
         r.rotationPosition = 0;
+        for (int j = 0; j < r.initialPosition; j++) {
+            r.rotate();
+        }
     }
 
     // Effect: copies default SETTING to setting
@@ -107,5 +116,9 @@ public class Rotar {
 
     public int getRotatePosition() {
         return this.rotationPosition;
+    }
+
+    public int getInitialPosition() {
+        return this.initialPosition;
     }
 }
