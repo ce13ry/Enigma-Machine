@@ -1,5 +1,8 @@
 package model;
 
+import org.json.JSONObject;
+
+// represents a rotar with initial position
 public class Rotar {
 
     private String[] setting;
@@ -120,5 +123,13 @@ public class Rotar {
 
     public int getInitialPosition() {
         return this.initialPosition;
+    }
+
+
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("i", settingNum);
+        json.put("initialPosition", initialPosition);
+        return json;
     }
 }

@@ -2,6 +2,10 @@ package model;
 
 import java.util.*;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+// represents an enigma machine with a collection of rotars
 public class Enigma {
 
     private ArrayList<Rotar> rotars;
@@ -128,5 +132,22 @@ public class Enigma {
             }
         } 
         return false;
+    }
+
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("rotars", rotarsToJson());
+        return json;
+    }
+
+    // EFFECTS: returns things in this workroom as a JSON array
+    private JSONArray rotarsToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Rotar r : rotars) {
+            jsonArray.put(r.toJson());
+        }
+
+        return jsonArray;
     }
 }
