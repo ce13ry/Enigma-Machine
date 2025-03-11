@@ -85,9 +85,9 @@ public class Gui implements ActionListener {
         mainPanel.setLayout(null);
         mainPanel.setBackground(Color.WHITE);
 
-        EnigmaButton();
+        enigmaButton();
 
-        addNotebook();
+        notebook();
 
         addMainButtons();
 
@@ -116,7 +116,7 @@ public class Gui implements ActionListener {
         frame.setVisible(true);
     }
 
-    private void EnigmaButton() {
+    private void enigmaButton() {
         ImageIcon enigmaIcon = new ImageIcon("./data/enigma.png");
         Image enigmaImage = enigmaIcon.getImage();
         Image resized = enigmaImage.getScaledInstance(300, 300, Image.SCALE_SMOOTH);
@@ -132,7 +132,7 @@ public class Gui implements ActionListener {
         mainPanel.add(enigmaButton);
     }
 
-    private void addNotebook() {
+    private void notebook() {
         mainPanel.setLayout(null);
     
         ImageIcon notebookIcon = new ImageIcon("./data/notebook.png");
@@ -144,6 +144,11 @@ public class Gui implements ActionListener {
         notebook.setBounds(350, 100, 400, 400);
         mainPanel.add(notebook);
     
+        addInput();
+        addOutput();
+    }
+
+    private void addInput() {
         textInput = new JTextArea(10, 10);
         textInput.setLineWrap(true);
         textInput.setWrapStyleWord(true);
@@ -163,7 +168,9 @@ public class Gui implements ActionListener {
         mainPanel.setComponentZOrder(textInput, 0);
         mainPanel.revalidate();
         mainPanel.repaint();
+    }
 
+    private void addOutput() {
         output = new JTextArea();
         output.setLineWrap(true);
         output.setWrapStyleWord(true);
@@ -187,36 +194,154 @@ public class Gui implements ActionListener {
     }
 
     private void addEnigmaButtons() {
+        
+        backButton();
+        resetButton();
+        saveButton();
+        loadButton();
+
+        upButtons();
+        downButtons();
+
+        rotarButtons();
+
+        rotarInitLabel();
+        rotarNumLabel();
+    }
+
+    private void backButton() {
         backButton = new JButton("Back");
         backButton.setBounds(0, 0, 80, 25);
         backButton.addActionListener(this);
         enigmaPanel.add(backButton);
+    }
 
+    private void resetButton() {
         resetButton = new JButton("Reset");
         resetButton.setBounds(0, 500, 80, 25);
         resetButton.addActionListener(this);
         enigmaPanel.add(resetButton);
+    }
 
+    private void saveButton() {
         save = new JButton("Save");
         save.setBounds(0, 450, 80, 25);
         save.addActionListener(this);
         enigmaPanel.add(save);
+    }
 
+    private void loadButton() {
         load = new JButton("Load");
         load.setBounds(0, 475, 80, 25);
         load.addActionListener(this);
         enigmaPanel.add(load);
+    }
 
+    private void upButtons() {
         ImageIcon upIcon = new ImageIcon("./data/up.png");
         Image upImage = upIcon.getImage();
         Image resizedUp = upImage.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
         ImageIcon resizedUpIcon = new ImageIcon(resizedUp);
 
+        rotar1up = new JButton();
+        rotar1up.setIcon(resizedUpIcon);
+        rotar1up.setBounds(90, 50, 50, 50);
+        rotar1up.setBorderPainted(false);
+        rotar1up.setContentAreaFilled(false);
+        rotar1up.setFocusPainted(false);
+        rotar1up.addActionListener(this);
+        enigmaPanel.add(rotar1up);
+
+        rotar2up = new JButton();
+        rotar2up.setIcon(resizedUpIcon);
+        rotar2up.setBounds(320, 50, 50, 50);
+        rotar2up.setBorderPainted(false);
+        rotar2up.setContentAreaFilled(false);
+        rotar2up.setFocusPainted(false);
+        rotar2up.addActionListener(this);
+        enigmaPanel.add(rotar2up);
+
+        rotar3up = new JButton();
+        rotar3up.setIcon(resizedUpIcon);
+        rotar3up.setBounds(550, 50, 50, 50);
+        rotar3up.setBorderPainted(false);
+        rotar3up.setContentAreaFilled(false);
+        rotar3up.setFocusPainted(false);
+        rotar3up.addActionListener(this);
+        enigmaPanel.add(rotar3up);
+        
+        rotar4up = new JButton();
+        rotar4up.setIcon(resizedUpIcon);
+        rotar4up.setBounds(190, 275, 50, 50);
+        rotar4up.setBorderPainted(false);
+        rotar4up.setContentAreaFilled(false);
+        rotar4up.setFocusPainted(false);
+        rotar4up.addActionListener(this);
+        enigmaPanel.add(rotar4up);
+
+        rotar5up = new JButton();
+        rotar5up.setIcon(resizedUpIcon);
+        rotar5up.setBounds(420, 275, 50, 50);
+        rotar5up.setBorderPainted(false);
+        rotar5up.setContentAreaFilled(false);
+        rotar5up.setFocusPainted(false);
+        rotar5up.addActionListener(this);
+        enigmaPanel.add(rotar5up);
+    }
+
+    private void downButtons() {
         ImageIcon downIcon = new ImageIcon("./data/down.png");
         Image downImage = downIcon.getImage();
         Image resizedDown = downImage.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
         ImageIcon resizedDownIcon = new ImageIcon(resizedDown);
+        
+        rotar1down = new JButton();
+        rotar1down.setIcon(resizedDownIcon);
+        rotar1down.setBounds(90, 150, 50, 50);
+        rotar1down.setBorderPainted(false);
+        rotar1down.setContentAreaFilled(false);
+        rotar1down.setFocusPainted(false);
+        rotar1down.addActionListener(this);
+        enigmaPanel.add(rotar1down);
+        
+        rotar2down = new JButton();
+        rotar2down.setIcon(resizedDownIcon);
+        rotar2down.setBounds(320, 150, 50, 50);
+        rotar2down.setBorderPainted(false);
+        rotar2down.setContentAreaFilled(false);
+        rotar2down.setFocusPainted(false);
+        rotar2down.addActionListener(this);
+        enigmaPanel.add(rotar2down);
+        
+        rotar3down = new JButton();
+        rotar3down.setIcon(resizedDownIcon);
+        rotar3down.setBounds(550, 150, 50, 50);
+        rotar3down.setBorderPainted(false);
+        rotar3down.setContentAreaFilled(false);
+        rotar3down.setFocusPainted(false);
+        rotar3down.addActionListener(this);
+        enigmaPanel.add(rotar3down);
+        
+        rotar4down = new JButton();
+        rotar4down.setIcon(resizedDownIcon);
+        rotar4down.setBounds(190, 375, 50, 50);
+        rotar4down.setBorderPainted(false);
+        rotar4down.setContentAreaFilled(false);
+        rotar4down.setFocusPainted(false);
+        rotar4down.addActionListener(this);
+        enigmaPanel.add(rotar4down);
+        
+        rotar5down = new JButton();
+        rotar5down.setIcon(resizedDownIcon);
+        rotar5down.setBounds(420, 375, 50, 50);
+        rotar5down.setBorderPainted(false);
+        rotar5down.setContentAreaFilled(false);
+        rotar5down.setFocusPainted(false);
+        rotar5down.addActionListener(this);
+        enigmaPanel.add(rotar5down);
+    }
 
+    private void rotarButtons() {
         ImageIcon rotarIcon = new ImageIcon("./data/rotar.png");
         Image rotarImage = rotarIcon.getImage();
         Image resized = rotarImage.getScaledInstance(150, 230, Image.SCALE_SMOOTH);
@@ -231,34 +356,6 @@ public class Gui implements ActionListener {
         rotarButton1.addActionListener(this);
         enigmaPanel.add(rotarButton1);
 
-        rotar1up = new JButton();
-        rotar1up.setIcon(resizedUpIcon);
-        rotar1up.setBounds(90, 50, 50, 50);
-        rotar1up.setBorderPainted(false);
-        rotar1up.setContentAreaFilled(false);
-        rotar1up.setFocusPainted(false);
-        rotar1up.addActionListener(this);
-        enigmaPanel.add(rotar1up);
-
-        rotar1down = new JButton();
-        rotar1down.setIcon(resizedDownIcon);
-        rotar1down.setBounds(90, 150, 50, 50);
-        rotar1down.setBorderPainted(false);
-        rotar1down.setContentAreaFilled(false);
-        rotar1down.setFocusPainted(false);
-        rotar1down.addActionListener(this);
-        enigmaPanel.add(rotar1down);
-
-        rotar1init = new JLabel(Integer.toString(rotar1));
-        rotar1init.setBounds(105, 110, 60, 30);
-        rotar1init.setFont(new Font("Arial", Font.PLAIN, 35));
-        enigmaPanel.add(rotar1init);
-
-        one = new JLabel();
-        one.setText("I");
-        one.setBounds(210, 0, 40, 40);
-        enigmaPanel.add(one);
-
         rotarButton2 = new JButton();
         rotarButton2.setIcon(resizedRotar);
         rotarButton2.setBounds(370, 10, 150, 230);
@@ -268,34 +365,6 @@ public class Gui implements ActionListener {
         rotarButton2.addActionListener(this);
         enigmaPanel.add(rotarButton2);
 
-        rotar2up = new JButton();
-        rotar2up.setIcon(resizedUpIcon);
-        rotar2up.setBounds(320, 50, 50, 50);
-        rotar2up.setBorderPainted(false);
-        rotar2up.setContentAreaFilled(false);
-        rotar2up.setFocusPainted(false);
-        rotar2up.addActionListener(this);
-        enigmaPanel.add(rotar2up);
-
-        rotar2down = new JButton();
-        rotar2down.setIcon(resizedDownIcon);
-        rotar2down.setBounds(320, 150, 50, 50);
-        rotar2down.setBorderPainted(false);
-        rotar2down.setContentAreaFilled(false);
-        rotar2down.setFocusPainted(false);
-        rotar2down.addActionListener(this);
-        enigmaPanel.add(rotar2down);
-
-        rotar2init = new JLabel(Integer.toString(rotar2));
-        rotar2init.setBounds(335, 110, 60, 30);
-        rotar2init.setFont(new Font("Arial", Font.PLAIN, 35));
-        enigmaPanel.add(rotar2init);
-
-        two = new JLabel();
-        two.setText("II");
-        two.setBounds(440, 0, 40, 40);
-        enigmaPanel.add(two);
-
         rotarButton3 = new JButton();
         rotarButton3.setIcon(resizedRotar);
         rotarButton3.setBounds(600, 10, 150, 230);
@@ -304,35 +373,7 @@ public class Gui implements ActionListener {
         rotarButton3.setFocusPainted(false);
         rotarButton3.addActionListener(this);
         enigmaPanel.add(rotarButton3);
-
-        rotar3up = new JButton();
-        rotar3up.setIcon(resizedUpIcon);
-        rotar3up.setBounds(550, 50, 50, 50);
-        rotar3up.setBorderPainted(false);
-        rotar3up.setContentAreaFilled(false);
-        rotar3up.setFocusPainted(false);
-        rotar3up.addActionListener(this);
-        enigmaPanel.add(rotar3up);
-
-        rotar3down = new JButton();
-        rotar3down.setIcon(resizedDownIcon);
-        rotar3down.setBounds(550, 150, 50, 50);
-        rotar3down.setBorderPainted(false);
-        rotar3down.setContentAreaFilled(false);
-        rotar3down.setFocusPainted(false);
-        rotar3down.addActionListener(this);
-        enigmaPanel.add(rotar3down);
-
-        rotar3init = new JLabel(Integer.toString(rotar3));
-        rotar3init.setBounds(565, 110, 60, 30);
-        rotar3init.setFont(new Font("Arial", Font.PLAIN, 35));
-        enigmaPanel.add(rotar3init);
-
-        three = new JLabel();
-        three.setText("III");
-        three.setBounds(670, 0, 40, 40);
-        enigmaPanel.add(three);
-
+        
         rotarButton4 = new JButton();
         rotarButton4.setIcon(resizedRotar);
         rotarButton4.setBounds(240, 235, 150, 230);
@@ -341,35 +382,7 @@ public class Gui implements ActionListener {
         rotarButton4.setFocusPainted(false);
         rotarButton4.addActionListener(this);
         enigmaPanel.add(rotarButton4);
-
-        rotar4up = new JButton();
-        rotar4up.setIcon(resizedUpIcon);
-        rotar4up.setBounds(190, 275, 50, 50);
-        rotar4up.setBorderPainted(false);
-        rotar4up.setContentAreaFilled(false);
-        rotar4up.setFocusPainted(false);
-        rotar4up.addActionListener(this);
-        enigmaPanel.add(rotar4up);
-
-        rotar4down = new JButton();
-        rotar4down.setIcon(resizedDownIcon);
-        rotar4down.setBounds(190, 375, 50, 50);
-        rotar4down.setBorderPainted(false);
-        rotar4down.setContentAreaFilled(false);
-        rotar4down.setFocusPainted(false);
-        rotar4down.addActionListener(this);
-        enigmaPanel.add(rotar4down);
-
-        rotar4init = new JLabel(Integer.toString(rotar4));
-        rotar4init.setBounds(205, 335, 60, 30);
-        rotar4init.setFont(new Font("Arial", Font.PLAIN, 35));
-        enigmaPanel.add(rotar4init);
-
-        four = new JLabel();
-        four.setText("IV");
-        four.setBounds(310, 225, 40, 40);
-        enigmaPanel.add(four);
-
+        
         rotarButton5 = new JButton();
         rotarButton5.setIcon(resizedRotar);
         rotarButton5.setBounds(470, 235, 150, 230);
@@ -378,29 +391,55 @@ public class Gui implements ActionListener {
         rotarButton5.setFocusPainted(false);
         rotarButton5.addActionListener(this);
         enigmaPanel.add(rotarButton5);
+    }
 
-        rotar5up = new JButton();
-        rotar5up.setIcon(resizedUpIcon);
-        rotar5up.setBounds(420, 275, 50, 50);
-        rotar5up.setBorderPainted(false);
-        rotar5up.setContentAreaFilled(false);
-        rotar5up.setFocusPainted(false);
-        rotar5up.addActionListener(this);
-        enigmaPanel.add(rotar5up);
-
-        rotar5down = new JButton();
-        rotar5down.setIcon(resizedDownIcon);
-        rotar5down.setBounds(420, 375, 50, 50);
-        rotar5down.setBorderPainted(false);
-        rotar5down.setContentAreaFilled(false);
-        rotar5down.setFocusPainted(false);
-        rotar5down.addActionListener(this);
-        enigmaPanel.add(rotar5down);
-
+    private void rotarInitLabel() {
+        rotar1init = new JLabel(Integer.toString(rotar1));
+        rotar1init.setBounds(105, 110, 60, 30);
+        rotar1init.setFont(new Font("Arial", Font.PLAIN, 35));
+        enigmaPanel.add(rotar1init);
+        
+        rotar2init = new JLabel(Integer.toString(rotar2));
+        rotar2init.setBounds(335, 110, 60, 30);
+        rotar2init.setFont(new Font("Arial", Font.PLAIN, 35));
+        enigmaPanel.add(rotar2init);
+        
+        rotar3init = new JLabel(Integer.toString(rotar3));
+        rotar3init.setBounds(565, 110, 60, 30);
+        rotar3init.setFont(new Font("Arial", Font.PLAIN, 35));
+        enigmaPanel.add(rotar3init);
+        
+        rotar4init = new JLabel(Integer.toString(rotar4));
+        rotar4init.setBounds(205, 335, 60, 30);
+        rotar4init.setFont(new Font("Arial", Font.PLAIN, 35));
+        enigmaPanel.add(rotar4init);
+        
         rotar5init = new JLabel(Integer.toString(rotar5));
         rotar5init.setBounds(435, 335, 60, 30);
         rotar5init.setFont(new Font("Arial", Font.PLAIN, 35));
         enigmaPanel.add(rotar5init);
+    }
+
+    private void rotarNumLabel() {
+        one = new JLabel();
+        one.setText("I");
+        one.setBounds(210, 0, 40, 40);
+        enigmaPanel.add(one);
+
+        two = new JLabel();
+        two.setText("II");
+        two.setBounds(440, 0, 40, 40);
+        enigmaPanel.add(two);
+        
+        three = new JLabel();
+        three.setText("III");
+        three.setBounds(670, 0, 40, 40);
+        enigmaPanel.add(three);
+
+        four = new JLabel();
+        four.setText("IV");
+        four.setBounds(310, 225, 40, 40);
+        enigmaPanel.add(four);
 
         five = new JLabel();
         five.setText("V");
