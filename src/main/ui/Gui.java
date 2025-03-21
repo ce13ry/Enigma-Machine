@@ -15,10 +15,11 @@ import java.awt.event.ActionListener;
 // Represents the graphical user interface for the Enigma Machine
 public class Gui implements ActionListener {
     Enigma enigma = new Enigma();
-    private static final String JSON_STORE = "./data/enigma.json";
+    private static final String JSON_STORE = "./img/enigma.json";
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
     private Boolean saved;
+    private Boolean gregorOn;
     private JFrame frame;
     private JPanel mainPanel;
     private JPanel enigmaPanel;
@@ -62,6 +63,8 @@ public class Gui implements ActionListener {
     private JButton load;
     private JLabel rotars;
     private JTextArea output;
+    private JLabel gregor;
+    private JButton gregorButton;
 
     // EFFECTS: creates a new GUI
     public Gui() {
@@ -73,6 +76,7 @@ public class Gui implements ActionListener {
         rotar4 = 0;
         rotar5 = 0;
         saved = true;
+        gregorOn = false;
         mainFrame();
     }
 
@@ -122,7 +126,7 @@ public class Gui implements ActionListener {
 
     // Effects: Creates the button for the Enigma settings
     private void enigmaButton() {
-        ImageIcon enigmaIcon = new ImageIcon("./data/enigma.png");
+        ImageIcon enigmaIcon = new ImageIcon("./img/enigma.png");
         Image enigmaImage = enigmaIcon.getImage();
         Image resized = enigmaImage.getScaledInstance(300, 300, Image.SCALE_SMOOTH);
         ImageIcon resizedEnigma = new ImageIcon(resized);
@@ -141,7 +145,7 @@ public class Gui implements ActionListener {
     private void notebook() {
         mainPanel.setLayout(null);
     
-        ImageIcon notebookIcon = new ImageIcon("./data/notebook.png");
+        ImageIcon notebookIcon = new ImageIcon("./img/notebook.png");
         Image notebookImage = notebookIcon.getImage();
         Image resizedNotebook = notebookImage.getScaledInstance(400, 400, Image.SCALE_SMOOTH);
         ImageIcon resizedNotebookIcon = new ImageIcon(resizedNotebook);
@@ -195,10 +199,8 @@ public class Gui implements ActionListener {
 
     // Effects: Creates the main buttons for the GUI
     private void addMainButtons() {
-        quitButton = new JButton("Quit");
-        quitButton.setBounds(0, 0, 80, 25);
-        quitButton.addActionListener(this);
-        mainPanel.add(quitButton);
+        quitButton();
+        gregorButton();
     }
 
     // Effects: Creates the buttons for the Enigma Machine
@@ -214,6 +216,22 @@ public class Gui implements ActionListener {
         rotarButtons();
         rotarInitLabel();
         rotarNumLabel();
+    }
+
+    // Effects: Creates the quit button
+    private void quitButton() {
+        quitButton = new JButton("Quit");
+        quitButton.setBounds(0, 0, 80, 25);
+        quitButton.addActionListener(this);
+        mainPanel.add(quitButton);
+    }
+
+    // Effects: Creates the gregor button
+    private void gregorButton() {
+        gregorButton = new JButton("My pookie ❤️");
+        gregorButton.setBounds(0, 25, 115, 25);
+        gregorButton.addActionListener(this);
+        mainPanel.add(gregorButton);
     }
 
     // Effects: Creates the back button
@@ -250,7 +268,7 @@ public class Gui implements ActionListener {
 
     // Effects: Creates the up buttons for the rotars
     private void upButtons() {
-        ImageIcon upIcon = new ImageIcon("./data/up.png");
+        ImageIcon upIcon = new ImageIcon("./img/up.png");
         Image upImage = upIcon.getImage();
         Image resizedUp = upImage.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
         ImageIcon resizedUpIcon = new ImageIcon(resizedUp);
@@ -319,7 +337,7 @@ public class Gui implements ActionListener {
 
     // Effects: Creates the down buttons for the rotars
     private void downButtons() {
-        ImageIcon downIcon = new ImageIcon("./data/down.png");
+        ImageIcon downIcon = new ImageIcon("./img/down.png");
         Image downImage = downIcon.getImage();
         Image resizedDown = downImage.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
         ImageIcon resizedDownIcon = new ImageIcon(resizedDown);
@@ -393,7 +411,7 @@ public class Gui implements ActionListener {
 
     // Effects: Creates the rotar buttons
     private void rotarButtons() {
-        ImageIcon rotarIcon = new ImageIcon("./data/rotar.png");
+        ImageIcon rotarIcon = new ImageIcon("./img/rotar.png");
         Image rotarImage = rotarIcon.getImage();
         Image resized = rotarImage.getScaledInstance(150, 230, Image.SCALE_SMOOTH);
         ImageIcon resizedRotar = new ImageIcon(resized);
@@ -608,6 +626,8 @@ public class Gui implements ActionListener {
             rotar5up();
         } else if (e.getSource() == rotar5down) {
             rotar5down();
+        } else if (e.getSource() == gregorButton) {
+            gregor();
         }
     }
 
@@ -782,6 +802,35 @@ public class Gui implements ActionListener {
         if (result == JOptionPane.YES_OPTION) {
             saveEnigma();
         }
+    }
+
+    // Effects: MY KINGGGGGG
+    private void gregor() {
+        if (!gregorOn) {
+            ImageIcon gregorIcon = new ImageIcon("./img/gregor.png");
+            Image gregorImage = gregorIcon.getImage();
+            Image resized = gregorImage.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+            ImageIcon resizedGregor = new ImageIcon(resized);
+
+            gregor = new JLabel();
+            gregor.setIcon(resizedGregor);
+            gregor.setBounds(430, 0,200, 200);
+            mainPanel.add(gregor);
+
+            mainPanel.revalidate();
+            mainPanel.repaint();
+
+            gregorOn = true;
+        } else {
+            gregorOff();
+        }
+    }
+
+    private void gregorOff() {
+        mainPanel.remove(gregor);
+        mainPanel.revalidate();
+        mainPanel.repaint();
+        gregorOn = false;
     }
 
     // Effects: Saves the Enigma Machine to file
