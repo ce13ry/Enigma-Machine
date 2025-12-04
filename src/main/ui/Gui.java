@@ -32,35 +32,35 @@ public class Gui implements ActionListener {
     private JTextArea textInput;
     private JButton quitButton;
     private JButton backButton;
-    private JButton rotarButton1;
-    private JButton rotarButton2;
-    private JButton rotarButton3;
-    private JButton rotarButton4;
-    private JButton rotarButton5;
-    private JButton rotar1up;
-    private JButton rotar1down;
-    private JButton rotar2up;
-    private JButton rotar2down;
-    private JButton rotar3up;
-    private JButton rotar3down;
-    private JButton rotar4up;
-    private JButton rotar4down;
-    private JButton rotar5up;
-    private JButton rotar5down;
-    private JLabel rotar1init;
-    private JLabel rotar2init;
-    private JLabel rotar3init;
-    private JLabel rotar4init;
-    private JLabel rotar5init;
-    private int rotar1;
-    private int rotar2;
-    private int rotar3;
-    private int rotar4;
-    private int rotar5;
+    private JButton rotorButton1;
+    private JButton rotorButton2;
+    private JButton rotorButton3;
+    private JButton rotorButton4;
+    private JButton rotorButton5;
+    private JButton rotor1up;
+    private JButton rotor1down;
+    private JButton rotor2up;
+    private JButton rotor2down;
+    private JButton rotor3up;
+    private JButton rotor3down;
+    private JButton rotor4up;
+    private JButton rotor4down;
+    private JButton rotor5up;
+    private JButton rotor5down;
+    private JLabel rotor1init;
+    private JLabel rotor2init;
+    private JLabel rotor3init;
+    private JLabel rotor4init;
+    private JLabel rotor5init;
+    private int rotor1;
+    private int rotor2;
+    private int rotor3;
+    private int rotor4;
+    private int rotor5;
     private JButton resetButton;
     private JButton save;
     private JButton load;
-    private JLabel rotars;
+    private JLabel rotors;
     private JTextArea output;
     private JLabel gregor;
     private JButton gregorButton;
@@ -69,11 +69,11 @@ public class Gui implements ActionListener {
     public Gui() {
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
-        rotar1 = 0;
-        rotar2 = 0;
-        rotar3 = 0;
-        rotar4 = 0;
-        rotar5 = 0;
+        rotor1 = 0;
+        rotor2 = 0;
+        rotor3 = 0;
+        rotor4 = 0;
+        rotor5 = 0;
         saved = true;
         gregorOn = false;
         mainFrame();
@@ -122,11 +122,11 @@ public class Gui implements ActionListener {
 
         addEnigmaButtons();
 
-        rotars = new JLabel("Rotors: " + settings());
-        rotars.setBounds(100, 500, 800, 25);
-        enigmaPanel.add(rotars);
+        rotors = new JLabel("Rotors: " + settings());
+        rotors.setBounds(100, 500, 800, 25);
+        enigmaPanel.add(rotors);
 
-        rotarLabel();
+        rotorLabel();
 
         frame.setVisible(true);
     }
@@ -220,9 +220,9 @@ public class Gui implements ActionListener {
 
         upButtons();
         downButtons();
-        rotarButtons();
-        rotarInitLabel();
-        rotarNumLabel();
+        rotorButtons();
+        rotorInitLabel();
+        rotorNumLabel();
     }
 
     // Effects: Creates the quit button
@@ -273,7 +273,7 @@ public class Gui implements ActionListener {
         enigmaPanel.add(load);
     }
 
-    // Effects: Creates the up buttons for the rotars
+    // Effects: Creates the up buttons for the rotors
     private void upButtons() {
         ImageIcon upIcon = new ImageIcon("./img/up.png");
         Image upImage = upIcon.getImage();
@@ -288,61 +288,61 @@ public class Gui implements ActionListener {
     }
 
     private void upOne(ImageIcon img) {
-        rotar1up = new JButton();
-        rotar1up.setIcon(img);
-        rotar1up.setBounds(90, 50, 50, 50);
-        rotar1up.setBorderPainted(false);
-        rotar1up.setContentAreaFilled(false);
-        rotar1up.setFocusPainted(false);
-        rotar1up.addActionListener(this);
-        enigmaPanel.add(rotar1up);
+        rotor1up = new JButton();
+        rotor1up.setIcon(img);
+        rotor1up.setBounds(90, 50, 50, 50);
+        rotor1up.setBorderPainted(false);
+        rotor1up.setContentAreaFilled(false);
+        rotor1up.setFocusPainted(false);
+        rotor1up.addActionListener(this);
+        enigmaPanel.add(rotor1up);
     }
 
     private void upTwo(ImageIcon img) {
-        rotar2up = new JButton();
-        rotar2up.setIcon(img);
-        rotar2up.setBounds(320, 50, 50, 50);
-        rotar2up.setBorderPainted(false);
-        rotar2up.setContentAreaFilled(false);
-        rotar2up.setFocusPainted(false);
-        rotar2up.addActionListener(this);
-        enigmaPanel.add(rotar2up);
+        rotor2up = new JButton();
+        rotor2up.setIcon(img);
+        rotor2up.setBounds(320, 50, 50, 50);
+        rotor2up.setBorderPainted(false);
+        rotor2up.setContentAreaFilled(false);
+        rotor2up.setFocusPainted(false);
+        rotor2up.addActionListener(this);
+        enigmaPanel.add(rotor2up);
     }
 
     private void upThree(ImageIcon img) {
-        rotar3up = new JButton();
-        rotar3up.setIcon(img);
-        rotar3up.setBounds(550, 50, 50, 50);
-        rotar3up.setBorderPainted(false);
-        rotar3up.setContentAreaFilled(false);
-        rotar3up.setFocusPainted(false);
-        rotar3up.addActionListener(this);
-        enigmaPanel.add(rotar3up);
+        rotor3up = new JButton();
+        rotor3up.setIcon(img);
+        rotor3up.setBounds(550, 50, 50, 50);
+        rotor3up.setBorderPainted(false);
+        rotor3up.setContentAreaFilled(false);
+        rotor3up.setFocusPainted(false);
+        rotor3up.addActionListener(this);
+        enigmaPanel.add(rotor3up);
     }
         
     private void upFour(ImageIcon img) {
-        rotar4up = new JButton();
-        rotar4up.setIcon(img);
-        rotar4up.setBounds(190, 275, 50, 50);
-        rotar4up.setBorderPainted(false);
-        rotar4up.setContentAreaFilled(false);
-        rotar4up.setFocusPainted(false);
-        rotar4up.addActionListener(this);
-        enigmaPanel.add(rotar4up);
+        rotor4up = new JButton();
+        rotor4up.setIcon(img);
+        rotor4up.setBounds(190, 275, 50, 50);
+        rotor4up.setBorderPainted(false);
+        rotor4up.setContentAreaFilled(false);
+        rotor4up.setFocusPainted(false);
+        rotor4up.addActionListener(this);
+        enigmaPanel.add(rotor4up);
     }
 
     private void upFive(ImageIcon img) {
-        rotar5up = new JButton();
-        rotar5up.setIcon(img);
-        rotar5up.setBounds(420, 275, 50, 50);
-        rotar5up.setBorderPainted(false);
-        rotar5up.setContentAreaFilled(false);
-        rotar5up.setFocusPainted(false);
-        rotar5up.addActionListener(this);
-        enigmaPanel.add(rotar5up);
+        rotor5up = new JButton();
+        rotor5up.setIcon(img);
+        rotor5up.setBounds(420, 275, 50, 50);
+        rotor5up.setBorderPainted(false);
+        rotor5up.setContentAreaFilled(false);
+        rotor5up.setFocusPainted(false);
+        rotor5up.addActionListener(this);
+        enigmaPanel.add(rotor5up);
     }
 
-    // Effects: Creates the down buttons for the rotars
+    // Effects: Creates the down buttons for the rotors
     private void downButtons() {
         ImageIcon downIcon = new ImageIcon("./img/down.png");
         Image downImage = downIcon.getImage();
@@ -358,168 +358,168 @@ public class Gui implements ActionListener {
 
     // Effects: add down button 1
     private void downOne(ImageIcon img) {
-        rotar1down = new JButton();
-        rotar1down.setIcon(img);
-        rotar1down.setBounds(90, 150, 50, 50);
-        rotar1down.setBorderPainted(false);
-        rotar1down.setContentAreaFilled(false);
-        rotar1down.setFocusPainted(false);
-        rotar1down.addActionListener(this);
-        enigmaPanel.add(rotar1down);
+        rotor1down = new JButton();
+        rotor1down.setIcon(img);
+        rotor1down.setBounds(90, 150, 50, 50);
+        rotor1down.setBorderPainted(false);
+        rotor1down.setContentAreaFilled(false);
+        rotor1down.setFocusPainted(false);
+        rotor1down.addActionListener(this);
+        enigmaPanel.add(rotor1down);
     }
         
     // Effects: add down button 2
     private void downTwo(ImageIcon img) {
-        rotar2down = new JButton();
-        rotar2down.setIcon(img);
-        rotar2down.setBounds(320, 150, 50, 50);
-        rotar2down.setBorderPainted(false);
-        rotar2down.setContentAreaFilled(false);
-        rotar2down.setFocusPainted(false);
-        rotar2down.addActionListener(this);
-        enigmaPanel.add(rotar2down);
+        rotor2down = new JButton();
+        rotor2down.setIcon(img);
+        rotor2down.setBounds(320, 150, 50, 50);
+        rotor2down.setBorderPainted(false);
+        rotor2down.setContentAreaFilled(false);
+        rotor2down.setFocusPainted(false);
+        rotor2down.addActionListener(this);
+        enigmaPanel.add(rotor2down);
     }
 
     // Effects: add down button 3
     private void downThree(ImageIcon img) {
-        rotar3down = new JButton();
-        rotar3down.setIcon(img);
-        rotar3down.setBounds(550, 150, 50, 50);
-        rotar3down.setBorderPainted(false);
-        rotar3down.setContentAreaFilled(false);
-        rotar3down.setFocusPainted(false);
-        rotar3down.addActionListener(this);
-        enigmaPanel.add(rotar3down);
+        rotor3down = new JButton();
+        rotor3down.setIcon(img);
+        rotor3down.setBounds(550, 150, 50, 50);
+        rotor3down.setBorderPainted(false);
+        rotor3down.setContentAreaFilled(false);
+        rotor3down.setFocusPainted(false);
+        rotor3down.addActionListener(this);
+        enigmaPanel.add(rotor3down);
     }
         
     // Effects: add down button 4
     private void downFour(ImageIcon img) {
-        rotar4down = new JButton();
-        rotar4down.setIcon(img);
-        rotar4down.setBounds(190, 375, 50, 50);
-        rotar4down.setBorderPainted(false);
-        rotar4down.setContentAreaFilled(false);
-        rotar4down.setFocusPainted(false);
-        rotar4down.addActionListener(this);
-        enigmaPanel.add(rotar4down);
+        rotor4down = new JButton();
+        rotor4down.setIcon(img);
+        rotor4down.setBounds(190, 375, 50, 50);
+        rotor4down.setBorderPainted(false);
+        rotor4down.setContentAreaFilled(false);
+        rotor4down.setFocusPainted(false);
+        rotor4down.addActionListener(this);
+        enigmaPanel.add(rotor4down);
     }
     
     // Effects: add down button 5
     private void downFive(ImageIcon img) {
-        rotar5down = new JButton();
-        rotar5down.setIcon(img);
-        rotar5down.setBounds(420, 375, 50, 50);
-        rotar5down.setBorderPainted(false);
-        rotar5down.setContentAreaFilled(false);
-        rotar5down.setFocusPainted(false);
-        rotar5down.addActionListener(this);
-        enigmaPanel.add(rotar5down);
+        rotor5down = new JButton();
+        rotor5down.setIcon(img);
+        rotor5down.setBounds(420, 375, 50, 50);
+        rotor5down.setBorderPainted(false);
+        rotor5down.setContentAreaFilled(false);
+        rotor5down.setFocusPainted(false);
+        rotor5down.addActionListener(this);
+        enigmaPanel.add(rotor5down);
     }
 
-    // Effects: Creates the rotar buttons
-    private void rotarButtons() {
-        ImageIcon rotarIcon = new ImageIcon("./img/rotar.png");
-        Image rotarImage = rotarIcon.getImage();
-        Image resized = rotarImage.getScaledInstance(150, 230, Image.SCALE_SMOOTH);
-        ImageIcon resizedRotar = new ImageIcon(resized);
+    // Effects: Creates the rotor buttons
+    private void rotorButtons() {
+        ImageIcon rotorIcon = new ImageIcon("./img/rotor.png");
+        Image rotorImage = rotorIcon.getImage();
+        Image resized = rotorImage.getScaledInstance(150, 230, Image.SCALE_SMOOTH);
+        ImageIcon resizedrotor = new ImageIcon(resized);
 
-        rotarButtonOne(resizedRotar);
-        rotarButtonTwo(resizedRotar);
-        rotarButtonThree(resizedRotar);
-        rotarButtonFour(resizedRotar);
-        rotarButtonFive(resizedRotar);
+        rotorButtonOne(resizedrotor);
+        rotorButtonTwo(resizedrotor);
+        rotorButtonThree(resizedrotor);
+        rotorButtonFour(resizedrotor);
+        rotorButtonFive(resizedrotor);
     }
 
-    // Effects: add rotar 1
-    private void rotarButtonOne(ImageIcon img) {
-        rotarButton1 = new JButton();
-        rotarButton1.setIcon(img);
-        rotarButton1.setBounds(140, 10, 150, 230);
-        rotarButton1.setBorderPainted(false);
-        rotarButton1.setContentAreaFilled(false);
-        rotarButton1.setFocusPainted(false);
-        rotarButton1.addActionListener(this);
-        enigmaPanel.add(rotarButton1);
+    // Effects: add rotor 1
+    private void rotorButtonOne(ImageIcon img) {
+        rotorButton1 = new JButton();
+        rotorButton1.setIcon(img);
+        rotorButton1.setBounds(140, 10, 150, 230);
+        rotorButton1.setBorderPainted(false);
+        rotorButton1.setContentAreaFilled(false);
+        rotorButton1.setFocusPainted(false);
+        rotorButton1.addActionListener(this);
+        enigmaPanel.add(rotorButton1);
     }
 
-    // Effects: add rotar 2
-    private void rotarButtonTwo(ImageIcon img) {
-        rotarButton2 = new JButton();
-        rotarButton2.setIcon(img);
-        rotarButton2.setBounds(370, 10, 150, 230);
-        rotarButton2.setBorderPainted(false);
-        rotarButton2.setContentAreaFilled(false);
-        rotarButton2.setFocusPainted(false);
-        rotarButton2.addActionListener(this);
-        enigmaPanel.add(rotarButton2);
+    // Effects: add rotor 2
+    private void rotorButtonTwo(ImageIcon img) {
+        rotorButton2 = new JButton();
+        rotorButton2.setIcon(img);
+        rotorButton2.setBounds(370, 10, 150, 230);
+        rotorButton2.setBorderPainted(false);
+        rotorButton2.setContentAreaFilled(false);
+        rotorButton2.setFocusPainted(false);
+        rotorButton2.addActionListener(this);
+        enigmaPanel.add(rotorButton2);
     }
 
-    // Effects: add rotar 3 
-    private void rotarButtonThree(ImageIcon img) {
-        rotarButton3 = new JButton();
-        rotarButton3.setIcon(img);
-        rotarButton3.setBounds(600, 10, 150, 230);
-        rotarButton3.setBorderPainted(false);
-        rotarButton3.setContentAreaFilled(false);
-        rotarButton3.setFocusPainted(false);
-        rotarButton3.addActionListener(this);
-        enigmaPanel.add(rotarButton3);
+    // Effects: add rotor 3 
+    private void rotorButtonThree(ImageIcon img) {
+        rotorButton3 = new JButton();
+        rotorButton3.setIcon(img);
+        rotorButton3.setBounds(600, 10, 150, 230);
+        rotorButton3.setBorderPainted(false);
+        rotorButton3.setContentAreaFilled(false);
+        rotorButton3.setFocusPainted(false);
+        rotorButton3.addActionListener(this);
+        enigmaPanel.add(rotorButton3);
     }
         
-    // Effects: add rotar 4
-    private void rotarButtonFour(ImageIcon img) {
-        rotarButton4 = new JButton();
-        rotarButton4.setIcon(img);
-        rotarButton4.setBounds(240, 235, 150, 230);
-        rotarButton4.setBorderPainted(false);
-        rotarButton4.setContentAreaFilled(false);
-        rotarButton4.setFocusPainted(false);
-        rotarButton4.addActionListener(this);
-        enigmaPanel.add(rotarButton4);
+    // Effects: add rotor 4
+    private void rotorButtonFour(ImageIcon img) {
+        rotorButton4 = new JButton();
+        rotorButton4.setIcon(img);
+        rotorButton4.setBounds(240, 235, 150, 230);
+        rotorButton4.setBorderPainted(false);
+        rotorButton4.setContentAreaFilled(false);
+        rotorButton4.setFocusPainted(false);
+        rotorButton4.addActionListener(this);
+        enigmaPanel.add(rotorButton4);
     }
         
-    // Effects: add rotar 5
-    private void rotarButtonFive(ImageIcon img) {
-        rotarButton5 = new JButton();
-        rotarButton5.setIcon(img);
-        rotarButton5.setBounds(470, 235, 150, 230);
-        rotarButton5.setBorderPainted(false);
-        rotarButton5.setContentAreaFilled(false);
-        rotarButton5.setFocusPainted(false);
-        rotarButton5.addActionListener(this);
-        enigmaPanel.add(rotarButton5);
-    }
-
-    // Effects: Creates the initial position labels for the rotars
-    private void rotarInitLabel() {
-        rotar1init = new JLabel(Integer.toString(rotar1));
-        rotar1init.setBounds(105, 110, 60, 30);
-        rotar1init.setFont(new Font("Arial", Font.PLAIN, 35));
-        enigmaPanel.add(rotar1init);
-        
-        rotar2init = new JLabel(Integer.toString(rotar2));
-        rotar2init.setBounds(335, 110, 60, 30);
-        rotar2init.setFont(new Font("Arial", Font.PLAIN, 35));
-        enigmaPanel.add(rotar2init);
-        
-        rotar3init = new JLabel(Integer.toString(rotar3));
-        rotar3init.setBounds(565, 110, 60, 30);
-        rotar3init.setFont(new Font("Arial", Font.PLAIN, 35));
-        enigmaPanel.add(rotar3init);
-        
-        rotar4init = new JLabel(Integer.toString(rotar4));
-        rotar4init.setBounds(205, 335, 60, 30);
-        rotar4init.setFont(new Font("Arial", Font.PLAIN, 35));
-        enigmaPanel.add(rotar4init);
-        
-        rotar5init = new JLabel(Integer.toString(rotar5));
-        rotar5init.setBounds(435, 335, 60, 30);
-        rotar5init.setFont(new Font("Arial", Font.PLAIN, 35));
-        enigmaPanel.add(rotar5init);
+    // Effects: add rotor 5
+    private void rotorButtonFive(ImageIcon img) {
+        rotorButton5 = new JButton();
+        rotorButton5.setIcon(img);
+        rotorButton5.setBounds(470, 235, 150, 230);
+        rotorButton5.setBorderPainted(false);
+        rotorButton5.setContentAreaFilled(false);
+        rotorButton5.setFocusPainted(false);
+        rotorButton5.addActionListener(this);
+        enigmaPanel.add(rotorButton5);
     }
 
-    // Effects: Creates the number labels for the rotars
-    private void rotarNumLabel() {
+    // Effects: Creates the initial position labels for the rotors
+    private void rotorInitLabel() {
+        rotor1init = new JLabel(Integer.toString(rotor1));
+        rotor1init.setBounds(105, 110, 60, 30);
+        rotor1init.setFont(new Font("Arial", Font.PLAIN, 35));
+        enigmaPanel.add(rotor1init);
+        
+        rotor2init = new JLabel(Integer.toString(rotor2));
+        rotor2init.setBounds(335, 110, 60, 30);
+        rotor2init.setFont(new Font("Arial", Font.PLAIN, 35));
+        enigmaPanel.add(rotor2init);
+        
+        rotor3init = new JLabel(Integer.toString(rotor3));
+        rotor3init.setBounds(565, 110, 60, 30);
+        rotor3init.setFont(new Font("Arial", Font.PLAIN, 35));
+        enigmaPanel.add(rotor3init);
+        
+        rotor4init = new JLabel(Integer.toString(rotor4));
+        rotor4init.setBounds(205, 335, 60, 30);
+        rotor4init.setFont(new Font("Arial", Font.PLAIN, 35));
+        enigmaPanel.add(rotor4init);
+        
+        rotor5init = new JLabel(Integer.toString(rotor5));
+        rotor5init.setBounds(435, 335, 60, 30);
+        rotor5init.setFont(new Font("Arial", Font.PLAIN, 35));
+        enigmaPanel.add(rotor5init);
+    }
+
+    // Effects: Creates the number labels for the rotors
+    private void rotorNumLabel() {
         one();
         two();
         three();
@@ -580,9 +580,9 @@ public class Gui implements ActionListener {
         mainPanel.repaint();
     }
 
-    // Effects: Updates the rotar label
-    private void rotarLabel() {
-        rotars.setText("Rotors: " + settings());
+    // Effects: Updates the rotor label
+    private void rotorLabel() {
+        rotors.setText("Rotors: " + settings());
         enigmaPanel.revalidate();
         enigmaPanel.repaint();
     }
@@ -595,16 +595,16 @@ public class Gui implements ActionListener {
             enigmaPanel();
         } else if (e.getSource() == backButton) {
             back();
-        } else if (e.getSource() == rotarButton1) {
-            addRotar(1, rotar1);
-        } else if (e.getSource() == rotarButton2) {
-            addRotar(2, rotar2);
-        } else if (e.getSource() == rotarButton3) {
-            addRotar(3, rotar3);
-        } else if (e.getSource() == rotarButton4) {
-            addRotar(4, rotar4);
-        } else if (e.getSource() == rotarButton5) {
-            addRotar(5, rotar5);
+        } else if (e.getSource() == rotorButton1) {
+            addrotor(1, rotor1);
+        } else if (e.getSource() == rotorButton2) {
+            addrotor(2, rotor2);
+        } else if (e.getSource() == rotorButton3) {
+            addrotor(3, rotor3);
+        } else if (e.getSource() == rotorButton4) {
+            addrotor(4, rotor4);
+        } else if (e.getSource() == rotorButton5) {
+            addrotor(5, rotor5);
         } else if (e.getSource() == resetButton) {
             reset();
         } else if (e.getSource() == save) {
@@ -613,26 +613,26 @@ public class Gui implements ActionListener {
             load();
         } else if (e.getSource() == quitButton) {
             quit();
-        } else if (e.getSource() == rotar1up) {
-            rotar1up();
-        } else if (e.getSource() == rotar1down) {
-            rotar1down();
-        } else if (e.getSource() == rotar2up) {
-            rotar2up();
-        } else if (e.getSource() == rotar2down) {
-            rotar2down();
-        } else if (e.getSource() == rotar3up) {
-            rotar3up();
-        } else if (e.getSource() == rotar3down) {
-            rotar3down();
-        } else if (e.getSource() == rotar4up) {
-            rotar4up();
-        } else if (e.getSource() == rotar4down) {
-            rotar4down();
-        } else if (e.getSource() == rotar5up) {
-            rotar5up();
-        } else if (e.getSource() == rotar5down) {
-            rotar5down();
+        } else if (e.getSource() == rotor1up) {
+            rotor1up();
+        } else if (e.getSource() == rotor1down) {
+            rotor1down();
+        } else if (e.getSource() == rotor2up) {
+            rotor2up();
+        } else if (e.getSource() == rotor2down) {
+            rotor2down();
+        } else if (e.getSource() == rotor3up) {
+            rotor3up();
+        } else if (e.getSource() == rotor3down) {
+            rotor3down();
+        } else if (e.getSource() == rotor4up) {
+            rotor4up();
+        } else if (e.getSource() == rotor4down) {
+            rotor4down();
+        } else if (e.getSource() == rotor5up) {
+            rotor5up();
+        } else if (e.getSource() == rotor5down) {
+            rotor5down();
         } else if (e.getSource() == gregorButton) {
             gregor();
         }
@@ -649,7 +649,7 @@ public class Gui implements ActionListener {
     // Modifies: enigma
     private void reset() {
         enigma.clear();
-        rotarLabel();
+        rotorLabel();
         saved = false;
     }
 
@@ -662,7 +662,7 @@ public class Gui implements ActionListener {
     // Effects: Loads the Enigma Machine
     private void load() {
         loadEnigma();
-        rotarLabel();
+        rotorLabel();
         saved = false;
     }
 
@@ -675,117 +675,117 @@ public class Gui implements ActionListener {
         System.exit(0);
     }
 
-    // Effects: Increases rotar 1 inital position by one
-    private void rotar1up() {
-        if (rotar1 >= Rotar.getNumOfChars()) {
-            rotar1 = 0;
+    // Effects: Increases rotor 1 inital position by one
+    private void rotor1up() {
+        if (rotor1 >= rotor.getNumOfChars()) {
+            rotor1 = 0;
         } else {
-            rotar1++;
+            rotor1++;
         }
-        rotar1init.setText(Integer.toString(rotar1));
+        rotor1init.setText(Integer.toString(rotor1));
     }
 
-    // Effects: Decreases rotar 1 inital position by one
-    private void rotar1down() {
-        if (rotar1 <= 0) {
-            rotar1 = Rotar.getNumOfChars();
+    // Effects: Decreases rotor 1 inital position by one
+    private void rotor1down() {
+        if (rotor1 <= 0) {
+            rotor1 = rotor.getNumOfChars();
         } else {
-            rotar1--;
+            rotor1--;
         }
-        rotar1init.setText(Integer.toString(rotar1));
+        rotor1init.setText(Integer.toString(rotor1));
     }
 
-    // Effects: Increases rotar 2 inital position by one
-    private void rotar2up() {
-        if (rotar2 >= Rotar.getNumOfChars()) {
-            rotar2 = 0;
+    // Effects: Increases rotor 2 inital position by one
+    private void rotor2up() {
+        if (rotor2 >= rotor.getNumOfChars()) {
+            rotor2 = 0;
         } else {
-            rotar2++;
+            rotor2++;
         }
-        rotar2init.setText(Integer.toString(rotar2));
+        rotor2init.setText(Integer.toString(rotor2));
     }
 
-    // Effects: Decreases rotar 2 inital position by one
-    private void rotar2down() {
-        if (rotar2 <= 0) {
-            rotar2 = Rotar.getNumOfChars();
+    // Effects: Decreases rotor 2 inital position by one
+    private void rotor2down() {
+        if (rotor2 <= 0) {
+            rotor2 = rotor.getNumOfChars();
         } else {
-            rotar2--;
+            rotor2--;
         }
-        rotar2init.setText(Integer.toString(rotar2));
+        rotor2init.setText(Integer.toString(rotor2));
     }
 
-    // Effects: Increases rotar 3 inital position by one
-    private void rotar3up() {
-        if (rotar3 >= Rotar.getNumOfChars()) {
-            rotar3 = 0;
+    // Effects: Increases rotor 3 inital position by one
+    private void rotor3up() {
+        if (rotor3 >= rotor.getNumOfChars()) {
+            rotor3 = 0;
         } else {
-            rotar3++;
+            rotor3++;
         }
-        rotar3init.setText(Integer.toString(rotar3));
+        rotor3init.setText(Integer.toString(rotor3));
     }
 
-    // Effects: Decreases rotar 3 inital position by one
-    private void rotar3down() {
-        if (rotar3 <= 0) {
-            rotar3 = Rotar.getNumOfChars();
+    // Effects: Decreases rotor 3 inital position by one
+    private void rotor3down() {
+        if (rotor3 <= 0) {
+            rotor3 = rotor.getNumOfChars();
         } else {
-            rotar3--;
+            rotor3--;
         }
-        rotar3init.setText(Integer.toString(rotar3));
+        rotor3init.setText(Integer.toString(rotor3));
     }
 
-    // Effects: Increases rotar 4 inital position by one
-    private void rotar4up() {
-        if (rotar4 >= Rotar.getNumOfChars()) {
-            rotar4 = 0;
+    // Effects: Increases rotor 4 inital position by one
+    private void rotor4up() {
+        if (rotor4 >= rotor.getNumOfChars()) {
+            rotor4 = 0;
         } else {
-            rotar4++;
+            rotor4++;
         }
-        rotar4init.setText(Integer.toString(rotar4));
+        rotor4init.setText(Integer.toString(rotor4));
     }
 
-    // Effects: Decreases rotar 4 inital position by one
-    private void rotar4down() {
-        if (rotar4 <= 0) {
-            rotar4 = Rotar.getNumOfChars();
+    // Effects: Decreases rotor 4 inital position by one
+    private void rotor4down() {
+        if (rotor4 <= 0) {
+            rotor4 = rotor.getNumOfChars();
         } else {
-            rotar4--;
+            rotor4--;
         }
-        rotar4init.setText(Integer.toString(rotar4));
+        rotor4init.setText(Integer.toString(rotor4));
     }
 
-    // Effects: Increases rotar 5 inital position by one
-    private void rotar5up() {
-        if (rotar5 >= Rotar.getNumOfChars()) {
-            rotar5 = 0;
+    // Effects: Increases rotor 5 inital position by one
+    private void rotor5up() {
+        if (rotor5 >= rotor.getNumOfChars()) {
+            rotor5 = 0;
         } else {
-            rotar5++;
+            rotor5++;
         }
-        rotar5init.setText(Integer.toString(rotar5));
+        rotor5init.setText(Integer.toString(rotor5));
     }
 
-    // Effects: Decreases rotar 5 inital position by one
-    private void rotar5down() {
-        if (rotar5 <= 0) {
-            rotar5 = Rotar.getNumOfChars();
+    // Effects: Decreases rotor 5 inital position by one
+    private void rotor5down() {
+        if (rotor5 <= 0) {
+            rotor5 = rotor.getNumOfChars();
         } else {
-            rotar5--;
+            rotor5--;
         }
-        rotar5init.setText(Integer.toString(rotar5));
+        rotor5init.setText(Integer.toString(rotor5));
     }
 
-    // Effects: Adds a rotar to the Enigma Machine
+    // Effects: Adds a rotor to the Enigma Machine
     // Modifies: enigma
-    private void addRotar(int setting, int initial) {
+    private void addrotor(int setting, int initial) {
         enigma.addSetting(setting, initial);
-        rotarLabel();
+        rotorLabel();
         saved = false;
     }
 
     // Effects: Ciphers the text
     private String cipher(String text) {
-        if (enigma.getRotars().isEmpty()) {
+        if (enigma.getrotors().isEmpty()) {
             return "";
         } else if (text.equals("")) {
             return "";
@@ -793,10 +793,10 @@ public class Gui implements ActionListener {
         return enigma.cipher(text);
     }
 
-    // Effects: Returns the settings of the rotars
+    // Effects: Returns the settings of the rotors
     private String settings() {
         String settings = "";
-        for (Rotar r : enigma.getRotars()) {
+        for (rotor r : enigma.getrotors()) {
             settings += r.getSettingNum() + " (" + r.getInitialPosition() + ")" + ", ";
         }
         return settings;
